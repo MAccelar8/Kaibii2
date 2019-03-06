@@ -417,7 +417,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             case R.id.userlogout:
                 FirebaseAuth.getInstance().signOut();
                 i = new Intent(NavigationActivity.this , LoginActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP| Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
         }
 
@@ -432,7 +432,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
     public void onBackPressed(){
         if (mDrawer.isDrawerOpen(GravityCompat.START)){
-            closeDrawer();
+            closeDrawer(); 
         }
         else {
             super.onBackPressed();
