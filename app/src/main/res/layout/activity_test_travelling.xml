@@ -5,23 +5,91 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TravellingActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_travellinglist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        tools:ignore="MissingConstraints">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="BRTS Helper"
+                android:textColor="@color/colorWhite"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/righteousregular"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView8"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="47dp"
+                android:layout_height="39dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/ic_simplebus" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.Toolbar>
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="400dp"
-        android:layout_height="100dp"
-        android:text="TextView" />
+        android:id="@+id/travellingtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_travellinglist" />
 
-    <LinearLayout
+    <ListView
+        android:id="@+id/progress"
         android:layout_width="match_parent"
-        android:layout_height="588dp"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteY="122dp">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="@id/travellingbutton"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/travellingtext" />
 
-        <ListView
-            android:id="@+id/progress"
-            android:layout_width="match_parent"
-            android:layout_height="489dp"
-            android:layout_marginTop="0dp" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/travellingbutton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorPrimary"
+        android:onClick="gotoMap"
+        android:text="Go To Maps"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
 </android.support.constraint.ConstraintLayout>

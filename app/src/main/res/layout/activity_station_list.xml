@@ -6,4 +6,76 @@
     android:layout_height="match_parent"
     tools:context=".StationListActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_stationlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        tools:ignore="MissingConstraints">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="BRTS Helper"
+                android:textColor="@color/colorWhite"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/righteousregular"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView8"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.428" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="47dp"
+                android:layout_height="39dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/ic_simplebus" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/stationRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layoutAnimation="@anim/layout_animation_fall_down"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_stationlist"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageview_back_stationlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_buslist"
+        app:layout_constraintStart_toStartOf="@+id/toolbar_buslist"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_navigate_before_white_18dp"
+        tools:ignore="MissingConstraints" />
+
 </android.support.constraint.ConstraintLayout>

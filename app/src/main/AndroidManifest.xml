@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_simplebus_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TestTravellingActivity"></activity>
+        <activity android:name=".MapNavigationActivity"></activity>
+        <activity android:name=".NearbyStationsActivity" />
+        <activity android:name=".TestTravellingActivity" />
         <activity android:name=".ProfileDisplayActivity" />
         <activity android:name=".NavigationMapActivity" />
         <activity android:name=".ContactUsActivity" />
@@ -31,9 +33,13 @@
         </activity>
         <activity android:name=".VerifyPhoneActivity" />
         <activity android:name=".SignupActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".SearchSouceFromMain" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
     </application>
 
 </manifest>

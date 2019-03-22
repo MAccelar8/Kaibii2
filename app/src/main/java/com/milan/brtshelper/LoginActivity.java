@@ -6,8 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,11 +38,17 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private String phno;
     private boolean flag;
+    private ProgressBar progressbarlogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        progressbarlogin = (ProgressBar) findViewById(R.id.progressBarlogin);
+
+
+
 
         // Access a Cloud Firestore instance from your Activity
          db = FirebaseFirestore.getInstance();
@@ -50,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText loginedit = (EditText)findViewById(R.id.loginphone);
         final Button loginbutton = findViewById(R.id.loginbutton);
         final Button verifybutton = findViewById(R.id.verifybutton);
-        loginbutton.setEnabled(true);
+        //loginbutton.setEnabled(true);
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -59,15 +68,20 @@ public class LoginActivity extends AppCompatActivity {
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressbarlogin.setVisibility(View.VISIBLE);
+
                 phno = loginedit.getText().toString().trim();
+
 
                 if (phno.isEmpty()){
                     loginedit.setError("Phone Number is required!!");
+                    progressbarlogin.setVisibility(View.GONE);
                     loginedit.requestFocus();
 
                 }
                 else if (phno.length()<10){
                     loginedit.setError("Please Enter a valid Phone Number");
+                    progressbarlogin.setVisibility(View.GONE);
                     loginedit.requestFocus();
                 }
                 else {
@@ -89,13 +103,12 @@ public class LoginActivity extends AppCompatActivity {
                     });
 
                         Log.d("PHno00",phno);
+
                         sendVerificationCode(phno);
                 }
 
             }
         });
-
-
         verifybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void verifycode() {
+
         EditText editTextVerify = findViewById(R.id.verifyphonetext);
         String verifycode = editTextVerify.getText().toString().trim();
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeSent,verifycode);
@@ -150,6 +164,7 @@ public class LoginActivity extends AppCompatActivity {
                             Intent i = new Intent(LoginActivity.this , NavigationActivity.class);
 //                            Log.d("Login_Success", "signInWithCredential:success");
                             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            progressbarlogin.setVisibility(View.GONE);
                             startActivity(i);
 
                         } else {
@@ -196,13 +211,19 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
             Log.d("Ver333","Ver Comp");
+
+            signInWithPhone(phoneAuthCredential);
         }
 
         @Override
         public void onVerificationFailed(FirebaseException e) {
+            progressbarlogin.setVisibility(View.GONE);
             Log.d("Ver444","Err");
         }
     };
+
+
+
     /*@Override
     public void onBackPressed()
     {

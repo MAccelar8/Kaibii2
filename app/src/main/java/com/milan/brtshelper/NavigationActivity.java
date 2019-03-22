@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -51,7 +53,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     android.widget.SearchView searchviewmain;
     android.widget.SearchView searchviewdestmain;
 
-
+    private FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,13 +69,15 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         editor.putInt("no_of_bus", no_of_bus);
         editor.putInt("no_of_routes", no_of_routes);
         editor.commit();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             uid = user.getPhoneNumber().toString().trim();
 
         } else {
-            Intent i =new Intent(NavigationActivity.this,LoginActivity.class);
-            startActivity(i);
+
+//            Intent i =new Intent(NavigationActivity.this,LoginActivity.class);
+//            startActivity(i);
+//            overridePendingTransition(R.anim.bounce , R.anim.bounce);
         }
         Toast.makeText(NavigationActivity.this,uid, LENGTH_LONG).show();
         setupToolbar();
@@ -131,6 +135,9 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         sourceTextView = (SearchView) findViewById(R.id.source);
         Log.i("destination",destTextView.getQuery().toString());
         Log.i("source",sourceTextView.getQuery().toString());
+
+
+
 
 
         mySrc=(sourceTextView.getQuery().toString().trim().length() > 0)?(sourceTextView.getQuery().toString()):stations[min].name;
@@ -223,6 +230,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 LinkedHashSet<String> routesSet = new LinkedHashSet<String>(routes);
                 LinkedHashSet<String> routeStaions=new LinkedHashSet<>(routeStationNames);
+                editor.putString("source",sourceTextView.getQuery().toString().trim());
+                editor.putString("destination", destTextView.getQuery().toString().trim());
                 editor.putStringSet("journey", routesSet);
                 editor.putStringSet("routeStationNames", routeStaions);
                 editor.commit();
@@ -261,7 +270,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
     private void setupToolbar() {
         mToolbar = findViewById(R.id.toolbar);
-        mToolbar.setTitle("BRTS Helper");
+//        mToolbar.setTitle("BRTS Helper");
         mDrawer = (DrawerLayout) findViewById(R.id.drawerlayout);
 
 
@@ -411,6 +420,10 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
             case R.id.navcontactus:
                 i = new Intent(NavigationActivity.this, ContactUsActivity.class);
+                startActivity(i);
+                break;
+            case R.id.navnearby:
+                i = new Intent(NavigationActivity.this, NearbyStationsActivity.class);
                 startActivity(i);
                 break;
 

@@ -4,99 +4,130 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/surface"
     tools:context=".LoginActivity">
 
-    <Button
-        android:id="@+id/loginbutton"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="match_parent"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:background="@color/colorPrimary"
-        android:text="Login"
-        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginphone" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        tools:ignore="MissingConstraints">
 
-    <EditText
-        android:id="@+id/loginphone"
-        style="@style/AppTheme"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/mainsrcsearchview"
-        android:ems="10"
-        android:hint="Enter your Mobile Number"
-        android:inputType="phone"
-        android:paddingLeft="10dp"
-        android:paddingTop="7dp"
-        android:paddingBottom="7dp"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logintextview" />
+
+        <Button
+            android:id="@+id/loginbutton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/colorPrimary"
+            android:text="Login"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginphone" />
+
+        <EditText
+            android:id="@+id/loginphone"
+            style="@style/AppTheme"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/mainsrcsearchview"
+            android:ems="10"
+            android:hint="Enter your Mobile Number"
+            android:inputType="phone"
+            android:paddingLeft="10dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="245dp" />
+
+        <Button
+            android:id="@+id/verifybutton"
+            style="@android:style/Widget.Material.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/colorPrimary"
+            android:text="Verify"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/verifyphonetext" />
+
+        <EditText
+            android:id="@+id/verifyphonetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/mainsrcsearchview"
+            android:ems="10"
+            android:hint="Enter your code here"
+            android:inputType="numberDecimal"
+            android:paddingLeft="10dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginbutton" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dancingscript"
+            android:text="Login"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="171dp"
+            tools:layout_editor_absoluteY="176dp" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
 
     <TextView
-        android:id="@+id/logintextview"
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Login"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="10sp"
+        android:fontFamily="@font/righteousregular"
+        android:text="BRTS Helper"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="65dp" />
 
-    <Button
-        android:id="@+id/verifybutton"
-        style="@android:style/Widget.Material.Button.Colored"
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:background="@color/colorPrimary"
-        android:text="Verify"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/verifyphonetext" />
-
-    <EditText
-        android:id="@+id/verifyphonetext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/mainsrcsearchview"
-        android:ems="10"
-        android:hint="Enter your code here"
-        android:inputType="numberDecimal"
-        android:paddingLeft="10dp"
-        android:paddingTop="7dp"
-        android:paddingBottom="7dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginbutton" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/brtsimg" />
 </android.support.constraint.ConstraintLayout>

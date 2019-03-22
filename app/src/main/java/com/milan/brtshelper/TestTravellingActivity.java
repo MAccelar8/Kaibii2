@@ -76,7 +76,7 @@ public class TestTravellingActivity extends AppCompatActivity {
                             } else {
                                 routeStationNames.remove(k);
                                 if (routeStationNames.size() == 0) {
-                                    TextView textView = findViewById(R.id.textView4);
+                                    TextView textView = findViewById(R.id.travellingtext);
                                     textView.setText("YOU HAVE REACHED TO YOUR DESTINATION.");
                                 }
                                 break;

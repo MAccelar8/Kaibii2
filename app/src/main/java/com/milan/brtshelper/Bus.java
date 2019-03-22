@@ -10,7 +10,7 @@ import java.io.InputStream;
 
 public class Bus {
     int busId, routeId;
-    String busNumber;
+    String busNumber, source, destination;
     Integer arr_at_src[], dep_from_src[];int no_of_trips;
     static int no_of_buses=4, count=0;
     static Bus[] buses = new Bus[no_of_buses];
@@ -36,6 +36,8 @@ public class Bus {
                     buses[i].routeId = arr.getJSONObject(i).getInt("routeId");
                     buses[i].busNumber = arr.getJSONObject(i).getString("busNumber");
                     buses[i].no_of_trips = arr.getJSONObject(i).getInt("no_of_trips");
+                    buses[i].source = arr.getJSONObject(i).getString("source");
+                    buses[i].destination = arr.getJSONObject(i).getString("destination");
                     JSONArray arrival = arr.getJSONObject(i).getJSONArray("arr_at_src");
                     JSONArray departure = arr.getJSONObject(i).getJSONArray("dep_from_src");
                     buses[i].arr_at_src = new Integer[buses[i].no_of_trips];
@@ -58,5 +60,40 @@ public class Bus {
     public String toString()
     {
         return this.busNumber;
+    }
+    public static Bus[] getBusesData()
+    {
+
+        return buses;
+    }
+    public String getBusNumber(String id)
+    {
+        for(Bus b : buses)
+        {
+            if(id.equals(b.busId))
+                return b.busNumber;
+
+        }
+        return null;
+    }
+    public String getBusDestination(String id)
+    {
+        for(Bus b : buses)
+        {
+            if(id.equals(b.busId))
+                return b.destination;
+
+        }
+        return null;
+    }
+    public String getBusSource(String id)
+    {
+        for(Bus b : buses)
+        {
+            if(id.equals(b.busId))
+                return b.source;
+
+        }
+        return null;
     }
 }
